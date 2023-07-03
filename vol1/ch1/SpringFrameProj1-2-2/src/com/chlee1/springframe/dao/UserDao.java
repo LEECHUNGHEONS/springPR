@@ -1,4 +1,4 @@
-package com.intheeast.springframe.dao;
+package com.chlee1.springframe.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,15 +6,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.intheeast.springframe.domain.User;
+import com.chlee.springframe.domain.User;
 
 
 public class UserDao {
 	public void add(User user) throws ClassNotFoundException, SQLException {
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/sbdt_db1?characterEncoding=UTF-8", 
-				"root",
-				"1234");
+		Connection c = getConnection();
 
 		PreparedStatement ps = c.prepareStatement(
 			"insert into users(id, name, password) values(?,?,?)");
@@ -30,10 +27,7 @@ public class UserDao {
 
 
 	public User get(String id) throws ClassNotFoundException, SQLException {
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/sbdt_db1?characterEncoding=UTF-8", 
-				"root",
-				"1234");
+		Connection c = getConnection();
 		PreparedStatement ps = c
 				.prepareStatement("select * from users where id = ?");
 		ps.setString(1, id);
@@ -52,6 +46,14 @@ public class UserDao {
 		return user;
 	}
 	
+	private Connection getConnection() throws ClassNotFoundException, SQLException {
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/sbdt_db?characterEncoding=UTF-8", 
+				"root",
+				"1234");
+		return c;
+	}
+	
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		UserDao dao = new UserDao();
 
@@ -62,13 +64,13 @@ public class UserDao {
 
 		dao.add(user);
 			
-		System.out.println(user.getId() + "등록 성공");
+		System.out.println(user.getId() + " \n 등록 성공");
 		
 		User user2 = dao.get(user.getId());
 		System.out.println(user2.getName());
 		System.out.println(user2.getPassword());
 			
-		System.out.println(user2.getId() + "조회 성공");
+		System.out.println(user2.getId() + " \n 조회성공 ");
 	}
 
 }
