@@ -1,17 +1,13 @@
-package com.intheeast.springframe.dao;
+package com.chlee.sec04;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.chlee.springframe.domain.User;
+import com.chlee.sec06.User;
 
 public class UserDao {	
-	
-	public UserDao(){
-		
-	}
 	
 	private ConnectionMaker connectionMaker;
 	
@@ -37,7 +33,6 @@ public class UserDao {
 
 	public User get(String id) throws ClassNotFoundException, SQLException {
 		Connection c = this.connectionMaker.makeConnection();
-		
 		PreparedStatement ps = c
 				.prepareStatement("select * from users where id = ?");
 		ps.setString(1, id);

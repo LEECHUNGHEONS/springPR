@@ -1,4 +1,6 @@
-package com.chlee1.springframe.dao;
+
+package com.chlee1.springframe;
+
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,6 +10,8 @@ import java.sql.SQLException;
 
 
 import com.chlee.springframe.domain.User;
+
+
 
 public class UserDao {
 	public void add(User user) throws ClassNotFoundException, SQLException {
@@ -63,17 +67,17 @@ public class UserDao {
 		user.setPassword("married");
 
 		dao.add(user);
+			
 
 		System.out.println(user.getId() + " \n 등록 성공");
-		
+
 		User user2 = dao.get(user.getId());
 		System.out.println(user2.getName());
 		System.out.println(user2.getPassword());
 			
+
 		System.out.println(user2.getId() + " \n 조회성공 ");
 
-		System.out.println(user2.getId() + "\n조회 성공");
- 
 	}
 
 }

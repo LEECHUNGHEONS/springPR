@@ -1,27 +1,23 @@
-package com.intheeast.springframe.dao;
+package com.chlee.sec07;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.chlee.springframe.domain.User;
+import com.chlee.sec08.User;
 
 public class UserDao {	
 	
-	public UserDao(){
-		
-	}
-	
 	private ConnectionMaker connectionMaker;
-	
+		
 	public UserDao(ConnectionMaker simpleConnectionMaker) {
 		this.connectionMaker = simpleConnectionMaker;
 	}
 	
 	public void add(User user) throws ClassNotFoundException, SQLException {
 		Connection c = this.connectionMaker.makeConnection();
-
+		
 		PreparedStatement ps = c.prepareStatement(
 			"insert into users(id, name, password) values(?,?,?)");
 		ps.setString(1, user.getId());

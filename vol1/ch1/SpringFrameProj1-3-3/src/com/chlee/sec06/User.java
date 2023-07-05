@@ -1,6 +1,4 @@
-
-package com.chlee.springframe.domain;
-
+package com.chlee.sec06;
 
 public class User {
 	String id;

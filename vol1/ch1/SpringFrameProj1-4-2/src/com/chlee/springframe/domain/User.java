@@ -1,7 +1,6 @@
 
 package com.chlee.springframe.domain;
 
-
 public class User {
 	String id;
 	String name;

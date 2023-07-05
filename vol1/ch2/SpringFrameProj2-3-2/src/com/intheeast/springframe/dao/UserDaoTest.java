@@ -22,12 +22,7 @@ public class UserDaoTest {
 		
 		User user = new User();
 		user.setId("gyumee");
-<<<<<<< HEAD:vol1/ch2/SpringFrameProj2-3-2/src/com/kitec/springframe/dao/UserDaoTest.java
 		user.setName("토비짱");
-=======
-		user.setName("박성철");
->>>>>>> 19b2387d8f021ca25c43995e04fe2b1f2803e355:vol1/ch2/SpringFrameProj2-3-2/src/com/intheeast/springframe/dao/UserDaoTest.java
-		user.setPassword("springno1");
 
 		dao.add(user);
 		assertEquals(dao.getCount(), 1);
