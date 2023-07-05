@@ -1,11 +1,13 @@
-package com.kitec.springframe.dao;
+package com.chlee.sec01;
 
 import java.sql.SQLException;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import com.kitec.springframe.domain.User;
+import com.chlee.sec01_02.User;
+
+
 
 
 public class UserDaoTest {

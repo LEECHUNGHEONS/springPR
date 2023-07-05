@@ -7,8 +7,6 @@ import java.sql.SQLException;
 
 import com.kitec.springframe.domain.User;
 
-
-
 public class UserDao {	
 	
 	private ConnectionMaker connectionMaker;

@@ -1,17 +1,15 @@
-package com.kitec.springframe.dao;
+package com.chlee.sec01;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.kitec.springframe.domain.User;
+import com.chlee.sec01_02.User;
 
-public class UserDao {	
-	
-	public UserDao(){
-		
-	}
+
+
+public class UserDao {
 	
 	private ConnectionMaker connectionMaker;
 	
@@ -54,5 +52,6 @@ public class UserDao {
 
 		return user;
 	}	
+	
 
 }

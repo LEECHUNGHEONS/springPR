@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.sql.SQLException;
 
+import javax.sql.DataSource;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,19 +14,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.datasource.SingleConnectionDataSource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.kitec.springframe.domain.User;
 
 
-@ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = {TestDaoFactory.class})
+//@ExtendWith(SpringExtension.class)
+//@ContextConfiguration(classes = {DaoFactory.class})
 public class UserDaoTest { 
 	
-	@Autowired
-	ApplicationContext context;
+	//@Autowired
+	//ApplicationContext context;
 	
+	//@Autowired
 	private UserDao dao;
 	
 	private User user1;
@@ -32,9 +36,18 @@ public class UserDaoTest {
 	private User user3;	
 		
 	@BeforeEach
-	public void setUp() {	
+	public void setUp() {
+		//Autowired를 주석처리 해서 컨테이너가 객체를 di를 안해주기때문에 
+		// 내가 직접 객체를 생성해줘서 넣어줘야함
+		dao = new UserDao();
+		DataSource dataSource = new SingleConnectionDataSource(
+				"jdbc:mysql://localhost:3306/sbdt_db1?characterEncoding=UTF-8",
+				"root",
+				"5799",
+				true);
+		dao.setDataSource(dataSource);
 		
-		this.dao = this.context.getBean("userDao", UserDao.class);
+		//this.dao = this.context.getBean("userDao", UserDao.class);
 		user1 = new User("user1", "sungkim", "5678");
 		user2 = new User("user2", "brucelee", "9012");
 		user3 = new User("user3", "haechoi", "1234");
