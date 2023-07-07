@@ -5,9 +5,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.intheeast.springframe.domain.User;
+import com.chlee.springframe.domain.User;
 
 public class UserDao {	
+	
+	public UserDao(){
+		
+	}
 	
 	private ConnectionMaker connectionMaker;
 	
